@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>love theory</title> 
+    <link rel="icon" href=https://toppng.com/uploads/preview/sparkling-heart-emoji-11549728981koloh9k642.png>
+    <style>
+        body {
+            background-color: #f486a9;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+            margin: 40px;
+        }
+        .switch-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-bottom: 40px;
+        }
+        .switch-label {
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+        .switch-button {
+            width: 60px;
+            height: 30px;
+            background-color: #da2121;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+        .switch-button:before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            top: 0;
+            left: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            background-color: #81c3e7;
+        }
+
+        .active:before {
+            transform: translateX(30px);
+        }
+
+        .heart {
+            position: absolute;
+            width: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999999;
+            animation: heart-in .1s infinite alternate ease-in-out;
+        }
+        @keyframes heart-in {
+            0% {
+                width: 100px;
+            }
+            100% {
+                width: 500px;
+            }
+        }
+        #heart {
+
+        }
+    </style>
+</head>
+<body>
+    <img class="heart" id="heart" style="display: none;" src="heart.png">
+
+    <h1 style="color: #fffefe; font-size: 120px;">Love Theory</h1>
+
+    <div class="switch-container">
+        <div class="switch-label">Intimacy</div>
+        <div id="intimacy" class="switch-button" onclick="toggleSwitch('intimacy')"></div>
+    </div>
+
+    <div class="switch-container">
+        <div class="switch-label">Passion</div>
+        <div id="passion" class="switch-button" onclick="toggleSwitch('passion')"></div>
+    </div>
+
+    <div class="switch-container">
+        <div class="switch-label">Commitment</div>
+        <div id="commitment" class="switch-button" onclick="toggleSwitch('commitment')"></div>
+    </div>
+
+    <script>
+        let numberOfTogglesClicked = 0;
+        function toggleSwitch(buttonId) {
+            var button = document.getElementById(buttonId);
+            button.style.pointerEvents = "none";
+            button.classList.toggle('active');
+            numberOfTogglesClicked = numberOfTogglesClicked + 1;
+            if (numberOfTogglesClicked == 3) {
+                var heart = document.getElementById("heart");
+                heart.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
+
