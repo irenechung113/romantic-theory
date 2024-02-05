@@ -41,7 +41,7 @@
             background-color: #ffffff;
             top: 0;
             left: 0;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
         }
 
         .active {
@@ -51,7 +51,11 @@
         .active:before {
             transform: translateX(30px);
         }
-
+        .heart-container {
+            position: absolute;
+            z-index: 9999999;
+            animation: heart-in .1s infinite alternate ease-in-out;
+        }
         .heart {
             position: absolute;
             width: 100px;
@@ -59,7 +63,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 9999999;
-            animation: heart-in .1s infinite alternate ease-in-out;
+            animation: heart-in .5s infinite alternate ease-in-out;
         }
         @keyframes heart-in {
             0% {
@@ -101,10 +105,28 @@
             button.style.pointerEvents = "none";
             button.classList.toggle('active');
             numberOfTogglesClicked = numberOfTogglesClicked + 1;
-            if (numberOfTogglesClicked == 3) {
-                var heart = document.getElementById("heart");
-                heart.style.display = "block";
-            }
+            if (numberOfTogglesClicked === 3) {
+                    for (let i=0; i < 10; i++) {
+                        createHeart (); 
+                    }
+              
+            }}
+            function createHeart() {
+            var heartContainer = document.createElement('div');
+            heartContainer.classList.add('heart-container');
+
+            var heart = document.createElement('img');
+            heart.src = 'heart.png';
+            heart.classList.add('heart');
+           
+            var randomX = Math.random() * window.innerWidth;
+            var randomY = Math.random() * window.innerHeight;
+
+            heartContainer.style.left = randomX + 'px';
+            heartContainer.style.top = randomY + 'px';
+
+            heartContainer.appendChild(heart);
+            document.body.appendChild(heartContainer);
         }
     </script>
 </body>
