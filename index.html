@@ -54,7 +54,6 @@
         .heart-container {
             position: absolute;
             z-index: 9999999;
-            animation: heart-in .1s infinite alternate ease-in-out;
         }
         .heart {
             position: absolute;
@@ -124,6 +123,9 @@
 
             heartContainer.style.left = randomX + 'px';
             heartContainer.style.top = randomY + 'px';
+
+            var randomAnimationDuration = Math.random()*4;
+            heart.style.animationDuration = randomAnimationDuration + "s";
 
             heartContainer.appendChild(heart);
             document.body.appendChild(heartContainer);
